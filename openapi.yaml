@@ -5588,7 +5588,7 @@ components:
       - name
       - message
       description: Resend-compatible error. `name` is e.g. validation_error, missing_api_key, invalid_api_key, restricted_api_key, unauthorized,
-        forbidden, not_found, rate_limit_exceeded, daily_quota_exceeded, conflict, invalid_idempotency_key, concurrent_idempotent_requests, internal_server_error.
+        forbidden, not_found, rate_limit_exceeded, daily_quota_exceeded, recipient_rate_limit_exceeded, content_not_allowed, conflict, invalid_idempotency_key, concurrent_idempotent_requests, internal_server_error.
       additionalProperties: true
     List:
       type: object
