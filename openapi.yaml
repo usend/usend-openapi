@@ -2066,6 +2066,43 @@ paths:
                 $ref: '#/components/schemas/DomainAutoConfigure'
         default:
           $ref: '#/components/responses/Error'
+  /domains/{id}/domain-connect:
+    post:
+      tags:
+      - Domains
+      operationId: startDomainConnect
+      summary: One-click DNS setup with Domain Connect
+      description: Finds the DNS provider that hosts the domain and, when it supports Domain Connect, returns the signed URL that sends the customer there to approve the records (usend extension).
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  object:
+                    type: string
+                    const: domain_connect
+                  supported:
+                    type: boolean
+                  reason:
+                    type: string
+                  provider_name:
+                    type: string
+                  url:
+                    type: string
+                  inbound_url:
+                    type: string
+                additionalProperties: true
+        default:
+          $ref: '#/components/responses/Error'
   /domains/{id}/insights:
     get:
       tags:
@@ -6127,6 +6164,27 @@ components:
               message:
                 type: string
             additionalProperties: true
+        audit:
+          type: object
+          description: Which records are verified and the resulting reputation risk (usend extension).
+          properties:
+            records_added:
+              type: array
+              items:
+                type: string
+            records_missing:
+              type: array
+              items:
+                type: string
+            reputation_risk:
+              type: string
+              enum:
+              - healthy
+              - warning
+              - critical
+              - unconfigured
+            reputation_text:
+              type: string
       additionalProperties: true
     DomainAutoConfigure:
       type: object
