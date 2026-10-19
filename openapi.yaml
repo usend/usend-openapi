@@ -2096,9 +2096,10 @@ paths:
                     type: string
                   provider_name:
                     type: string
-                  url:
+                  service:
                     type: string
-                  inbound_url:
+                    description: The Domain Connect template the URL applies, email or email-send-and-receive (receiving on).
+                  url:
                     type: string
                 additionalProperties: true
         default:
