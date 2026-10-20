@@ -2918,6 +2918,21 @@ paths:
       - $ref: '#/components/parameters/Limit'
       - $ref: '#/components/parameters/After'
       - $ref: '#/components/parameters/Before'
+      - name: to
+        in: query
+        description: Only email to a recipient containing this text (case-insensitive), e.g. dmarc@example.com.
+        schema:
+          type: string
+      - name: from
+        in: query
+        description: Only email from a sender containing this text (case-insensitive).
+        schema:
+          type: string
+      - name: search
+        in: query
+        description: Only email whose subject or sender contains this text (case-insensitive).
+        schema:
+          type: string
       responses:
         '200':
           description: Success
