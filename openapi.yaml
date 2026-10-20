@@ -1991,6 +1991,10 @@ paths:
                   type: boolean
                 receiving_enabled:
                   type: boolean
+                receiving_mode:
+                  type: string
+                  enum: [all, inboxes]
+                  description: Which addresses receive. `all` (default) is a catch-all; `inboxes` accepts only the addresses of the domain's enabled inboxes.
                 custom_return_path:
                   type: string
                 tls:
@@ -6142,6 +6146,9 @@ components:
           type: boolean
         receiving_enabled:
           type: boolean
+        receiving_mode:
+          type: string
+          enum: [all, inboxes]
         custom_return_path:
           type: string
         tls:
@@ -6784,6 +6791,10 @@ components:
           type: string
         text:
           type: string
+        failure_reason:
+          type: string
+          nullable: true
+          description: Why a failed or paused broadcast stopped.
         status:
           type: string
           enum:
