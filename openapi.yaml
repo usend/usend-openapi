@@ -2183,6 +2183,17 @@ paths:
       - $ref: '#/components/parameters/Limit'
       - $ref: '#/components/parameters/After'
       - $ref: '#/components/parameters/Before'
+      - name: to
+        in: query
+        description: Only email to this recipient. A full address matches exactly (case-insensitive); other text matches any recipient containing it.
+        schema:
+          type: string
+      - name: group
+        in: query
+        description: Only email to the addresses of this mail group (made in the dashboard).
+        schema:
+          type: string
+          format: uuid
       - name: tag_name
         in: query
         required: false
@@ -2920,9 +2931,15 @@ paths:
       - $ref: '#/components/parameters/Before'
       - name: to
         in: query
-        description: Only email to a recipient containing this text (case-insensitive), e.g. dmarc@example.com.
+        description: Only email to this recipient. A full address matches exactly (case-insensitive), e.g. dmarc@example.com; other text matches any recipient containing it.
         schema:
           type: string
+      - name: group
+        in: query
+        description: Only email to the addresses of this mail group (made in the dashboard).
+        schema:
+          type: string
+          format: uuid
       - name: from
         in: query
         description: Only email from a sender containing this text (case-insensitive).
