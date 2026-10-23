@@ -6132,7 +6132,6 @@ components:
           - SPF
           - DMARC
           - Receiving
-          - BIMI
         name:
           type: string
         type:
