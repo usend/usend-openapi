@@ -6086,6 +6086,9 @@ components:
           format: date-time
         attachment_count:
           type: integer
+        read:
+          type: boolean
+          description: Opened in the dashboard by someone in the organization (or marked read there). Reading it with an API key does not change it.
       additionalProperties: true
     InboundEmail:
       allOf:
