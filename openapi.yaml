@@ -6189,6 +6189,7 @@ components:
           - enforced
         dns_provider:
           type: string
+          description: "DNS host detected from the nameservers: cloudflare, route53, godaddy, namecheap, porkbun, hostinger, vercel, squarespace, gandi, ionos, hetzner, dreamhost, strato, or empty when unknown."
         records:
           type: array
           items:
