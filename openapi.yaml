@@ -46,6 +46,36 @@ tags:
 - name: Tools
 - name: OAuth
 paths:
+  /.well-known/oauth-protected-resource:
+    get:
+      tags:
+      - OAuth
+      operationId: getMCPResourceMetadata
+      summary: Protected resource metadata for the MCP server (RFC 9728)
+      description: Names the MCP endpoint (`<MCP_URL>/mcp`) and the authorization server that issues tokens for it.
+        MCP clients find it through the `WWW-Authenticate` header of a 401 from `/mcp`.
+      security: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProtectedResourceMetadata'
+  /.well-known/oauth-protected-resource/mcp:
+    get:
+      tags:
+      - OAuth
+      operationId: getMCPResourceMetadataByPath
+      summary: Protected resource metadata for the MCP endpoint (RFC 9728, path form)
+      security: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProtectedResourceMetadata'
   /.well-known/oauth-authorization-server:
     get:
       tags:
@@ -5617,6 +5647,28 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
+    ProtectedResourceMetadata:
+      type: object
+      properties:
+        resource:
+          type: string
+          description: The MCP endpoint, e.g. https://mcp.usend.et/mcp
+        authorization_servers:
+          type: array
+          items:
+            type: string
+        scopes_supported:
+          type: array
+          items:
+            type: string
+        bearer_methods_supported:
+          type: array
+          items:
+            type: string
+        resource_name:
+          type: string
+        resource_documentation:
+          type: string
     Person:
       type: object
       properties:
